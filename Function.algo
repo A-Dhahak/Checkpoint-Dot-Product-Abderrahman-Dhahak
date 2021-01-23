@@ -1,0 +1,39 @@
+FUNCTION dot_product (v1,v2:ARRAY_OF_FLOAT):FLOAT
+VAR
+i:INTEGER;
+PS:FLOAT;
+BEGIN
+IF(v1.length==v2.length) THEN
+FOR i FROM 0 TO 2 DO
+PS:=PS+(v1[i]*v2[i]);
+END_FOR
+ELSE Write("The length of the two arrays is not equal");
+PS:= NaN;
+
+RETURN PS
+END
+ALGORITHM Orthogonal 
+VAR 
+i,j,n:INTEGER;
+v1,v2:ARRAY_OF_FLOAT[3];
+PS:FLOAT;
+
+BEGIN
+REPEAT
+    Read(n);
+UNTIL (n>0) 
+
+FOR i FROM 1 TO n STEP 1 DO
+FOR j FROM 0 TO 2 STEP 1 DO
+Read(v1[j]);
+Read(v2[j]);
+END_FOR
+
+dot_product(v1,v2,PS);
+IF (PS==0) THEN
+Write("The"+ i +"pairs of vectors are orthogonal")
+ELSE
+Write("The"+ i +"pairs of vectors are not orthogonal")
+END_IF
+END_FOR
+END
